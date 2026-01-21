@@ -1,0 +1,234 @@
+   Compiling rustdesk v1.4.4 (E:\dev\rustdesk-controller-window)
+error[E0583]: file not found for module `bridge_generated`
+  --> src\lib.rs:33:1
+   |
+33 | mod bridge_generated;
+   | ^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: to create the module `bridge_generated`, create file "src\bridge_generated.rs" or "src\bridge_generated\mod.rs"
+   = note: if there is a `mod bridge_generated` elsewhere in the crate already, import it with `use crate::...` instead
+
+warning: unused import: `mpsc`
+  --> src\server\input_service.rs:25:9
+   |
+25 |         mpsc,
+   |         ^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused imports: `MOUSE_BUTTON_LEFT`, `MOUSE_TYPE_DOWN`, `MOUSE_TYPE_UP`, and `MOUSE_TYPE_WHEEL`
+ --> src\ui_session_interface.rs:3:13
+  |
+3 |     input::{MOUSE_BUTTON_LEFT, MOUSE_TYPE_DOWN, MOUSE_TYPE_UP, MOUSE_TYPE_WHEEL},
+  |             ^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^
+
+warning: use of deprecated function `hbb_common::base64::encode`: Use Engine::encode
+   --> src\hbbs_http\sync.rs:187:52
+    |
+187 |                         hash = hbb_common::base64::encode(&res[..]);
+    |                                                    ^^^^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+error[E0560]: struct `hbb_common::rendezvous_proto::PunchHoleRequest` has no field named `custom_access_token`
+   --> src\client.rs:466:13
+    |
+466 |             custom_access_token: crate::ui_interface::get_local_option("access_token_c".to_string()),
+    |             ^^^^^^^^^^^^^^^^^^^ `hbb_common::rendezvous_proto::PunchHoleRequest` does not have this field
+    |
+    = note: available fields are: `upnp_port`, `special_fields`
+
+error[E0560]: struct `hbb_common::rendezvous_proto::PunchHoleRequest` has no field named `username`
+   --> src\client.rs:467:13
+    |
+467 |             username: crate::ui_interface::get_local_option("user_name_c".to_string()),
+    |             ^^^^^^^^ `hbb_common::rendezvous_proto::PunchHoleRequest` does not have this field
+    |
+    = note: available fields are: `upnp_port`, `special_fields`
+
+error[E0599]: no variant or associated item named `TOKEN_EXPIRED` found for enum `Failure` in the current scope
+   --> src\client.rs:503:66
+    |
+503 | ...                   Ok(punch_hole_response::Failure::TOKEN_EXPIRED) => {
+    |                                                        ^^^^^^^^^^^^^ variant or associated item not found in `Failure`
+
+error[E0599]: no variant or associated item named `TOKEN_INVALID` found for enum `Failure` in the current scope
+   --> src\client.rs:520:66
+    |
+520 | ...                   Ok(punch_hole_response::Failure::TOKEN_INVALID) => {
+    |                                                        ^^^^^^^^^^^^^ variant or associated item not found in `Failure`
+
+error[E0609]: no field `custom_access_token` on type `&mut hbb_common::rendezvous_proto::PunchHoleRequest`
+   --> src\client.rs:506:70
+    |
+506 | ...   msg_out.mut_punch_hole_request().custom_access_token = crate::ui_interface::get_local_option("access_token_c".to_string());
+    |                                        ^^^^^^^^^^^^^^^^^^^ unknown field
+    |
+    = note: available fields are: `id`, `nat_type`, `licence_key`, `conn_type`, `token` ... and 6 others
+
+error[E0560]: struct `hbb_common::rendezvous_proto::RequestRelay` has no field named `custom_access_token`
+   --> src\client.rs:926:17
+    |
+926 |                 custom_access_token: crate::ui_interface::get_local_option("access_token_c".to_string()),
+    |                 ^^^^^^^^^^^^^^^^^^^ `hbb_common::rendezvous_proto::RequestRelay` does not have this field
+    |
+    = note: available fields are: `socket_addr`, `licence_key`, `conn_type`, `special_fields`
+
+error[E0560]: struct `hbb_common::rendezvous_proto::RequestRelay` has no field named `username`
+   --> src\client.rs:927:17
+    |
+927 |                 username: crate::ui_interface::get_local_option("user_name_c".to_string()),
+    |                 ^^^^^^^^ `hbb_common::rendezvous_proto::RequestRelay` does not have this field
+    |
+    = note: available fields are: `socket_addr`, `licence_key`, `conn_type`, `special_fields`
+
+error[E0560]: struct `hbb_common::rendezvous_proto::RequestRelay` has no field named `custom_access_token`
+   --> src\client.rs:971:13
+    |
+971 |             custom_access_token: crate::ui_interface::get_local_option("access_token_c".to_string()),
+    |             ^^^^^^^^^^^^^^^^^^^ `hbb_common::rendezvous_proto::RequestRelay` does not have this field
+    |
+    = note: available fields are: `socket_addr`, `relay_server`, `secure`, `token`, `special_fields`
+
+error[E0560]: struct `hbb_common::rendezvous_proto::RequestRelay` has no field named `username`
+   --> src\client.rs:972:13
+    |
+972 |             username: crate::ui_interface::get_local_option("user_name_c".to_string()),
+    |             ^^^^^^^^ `hbb_common::rendezvous_proto::RequestRelay` does not have this field
+    |
+    = note: available fields are: `socket_addr`, `relay_server`, `secure`, `token`, `special_fields`
+
+error[E0277]: the trait bound `EventToUI: IntoIntoDart<_>` is not satisfied
+   --> src\flutter.rs:585:28
+    |
+585 |                     stream.add(EventToUI::Event(out.clone()));
+    |                            ^^^ unsatisfied trait bound
+    |
+help: the trait `IntoIntoDart<_>` is not implemented for `EventToUI`
+   --> src\flutter_ffi.rs:95:1
+    |
+ 95 | pub enum EventToUI {
+    | ^^^^^^^^^^^^^^^^^^
+    = help: the following other types implement trait `IntoIntoDart<D>`:
+              `()` implements `IntoIntoDart<()>`
+              `(A, B)` implements `IntoIntoDart<(AD, BD)>`
+              `(A, B, C)` implements `IntoIntoDart<(AD, BD, CD)>`
+              `(A, B, C, D)` implements `IntoIntoDart<(AD, BD, CD, DD)>`
+              `(A, B, C, D, E)` implements `IntoIntoDart<(AD, BD, CD, DD, ED)>`
+              `Box<T>` implements `IntoIntoDart<T>`
+              `DartCObject` implements `IntoIntoDart<DartCObject>`
+              `DartOpaque` implements `IntoIntoDart<DartOpaque>`
+            and 23 others
+note: required by a bound in `StreamSink::<T>::add`
+   --> C:\Users\jhpark\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\flutter_rust_bridge-1.80.1\src\rust2dart.rs:139:12
+    |
+137 |     pub fn add<D: IntoDart>(&self, value: T) -> bool
+    |            --- required by a bound in this associated function
+138 |     where
+139 |         T: IntoIntoDart<D>,
+    |            ^^^^^^^^^^^^^^^ required by this bound in `StreamSink::<T>::add`
+
+error[E0277]: the trait bound `EventToUI: IntoIntoDart<_>` is not satisfied
+    --> src\flutter.rs:1229:24
+     |
+1229 |                 stream.add(EventToUI::Rgba(display));
+     |                        ^^^ unsatisfied trait bound
+     |
+help: the trait `IntoIntoDart<_>` is not implemented for `EventToUI`
+    --> src\flutter_ffi.rs:95:1
+     |
+  95 | pub enum EventToUI {
+     | ^^^^^^^^^^^^^^^^^^
+     = help: the following other types implement trait `IntoIntoDart<D>`:
+               `()` implements `IntoIntoDart<()>`
+               `(A, B)` implements `IntoIntoDart<(AD, BD)>`
+               `(A, B, C)` implements `IntoIntoDart<(AD, BD, CD)>`
+               `(A, B, C, D)` implements `IntoIntoDart<(AD, BD, CD, DD)>`
+               `(A, B, C, D, E)` implements `IntoIntoDart<(AD, BD, CD, DD, ED)>`
+               `Box<T>` implements `IntoIntoDart<T>`
+               `DartCObject` implements `IntoIntoDart<DartCObject>`
+               `DartOpaque` implements `IntoIntoDart<DartOpaque>`
+             and 23 others
+note: required by a bound in `StreamSink::<T>::add`
+    --> C:\Users\jhpark\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\flutter_rust_bridge-1.80.1\src\rust2dart.rs:139:12
+     |
+ 137 |     pub fn add<D: IntoDart>(&self, value: T) -> bool
+     |            --- required by a bound in this associated function
+ 138 |     where
+ 139 |         T: IntoIntoDart<D>,
+     |            ^^^^^^^^^^^^^^^ required by this bound in `StreamSink::<T>::add`
+
+error[E0277]: the trait bound `EventToUI: IntoIntoDart<_>` is not satisfied
+    --> src\flutter.rs:1259:32
+     |
+1259 |                         stream.add(EventToUI::Texture(display, false));
+     |                                ^^^ unsatisfied trait bound
+     |
+help: the trait `IntoIntoDart<_>` is not implemented for `EventToUI`
+    --> src\flutter_ffi.rs:95:1
+     |
+  95 | pub enum EventToUI {
+     | ^^^^^^^^^^^^^^^^^^
+     = help: the following other types implement trait `IntoIntoDart<D>`:
+               `()` implements `IntoIntoDart<()>`
+               `(A, B)` implements `IntoIntoDart<(AD, BD)>`
+               `(A, B, C)` implements `IntoIntoDart<(AD, BD, CD)>`
+               `(A, B, C, D)` implements `IntoIntoDart<(AD, BD, CD, DD)>`
+               `(A, B, C, D, E)` implements `IntoIntoDart<(AD, BD, CD, DD, ED)>`
+               `Box<T>` implements `IntoIntoDart<T>`
+               `DartCObject` implements `IntoIntoDart<DartCObject>`
+               `DartOpaque` implements `IntoIntoDart<DartOpaque>`
+             and 23 others
+note: required by a bound in `StreamSink::<T>::add`
+    --> C:\Users\jhpark\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\flutter_rust_bridge-1.80.1\src\rust2dart.rs:139:12
+     |
+ 137 |     pub fn add<D: IntoDart>(&self, value: T) -> bool
+     |            --- required by a bound in this associated function
+ 138 |     where
+ 139 |         T: IntoIntoDart<D>,
+     |            ^^^^^^^^^^^^^^^ required by this bound in `StreamSink::<T>::add`
+
+error[E0277]: the trait bound `EventToUI: IntoIntoDart<_>` is not satisfied
+    --> src\flutter.rs:1428:16
+     |
+1428 |         stream.add(EventToUI::Event("close".to_owned()));
+     |                ^^^ unsatisfied trait bound
+     |
+help: the trait `IntoIntoDart<_>` is not implemented for `EventToUI`
+    --> src\flutter_ffi.rs:95:1
+     |
+  95 | pub enum EventToUI {
+     | ^^^^^^^^^^^^^^^^^^
+     = help: the following other types implement trait `IntoIntoDart<D>`:
+               `()` implements `IntoIntoDart<()>`
+               `(A, B)` implements `IntoIntoDart<(AD, BD)>`
+               `(A, B, C)` implements `IntoIntoDart<(AD, BD, CD)>`
+               `(A, B, C, D)` implements `IntoIntoDart<(AD, BD, CD, DD)>`
+               `(A, B, C, D, E)` implements `IntoIntoDart<(AD, BD, CD, DD, ED)>`
+               `Box<T>` implements `IntoIntoDart<T>`
+               `DartCObject` implements `IntoIntoDart<DartCObject>`
+               `DartOpaque` implements `IntoIntoDart<DartOpaque>`
+             and 23 others
+note: required by a bound in `StreamSink::<T>::add`
+    --> C:\Users\jhpark\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\flutter_rust_bridge-1.80.1\src\rust2dart.rs:139:12
+     |
+ 137 |     pub fn add<D: IntoDart>(&self, value: T) -> bool
+     |            --- required by a bound in this associated function
+ 138 |     where
+ 139 |         T: IntoIntoDart<D>,
+     |            ^^^^^^^^^^^^^^^ required by this bound in `StreamSink::<T>::add`
+
+warning: variable does not need to be mutable
+  --> src\tray.rs:60:9
+   |
+60 |     let mut event_loop = EventLoopBuilder::new().build();
+   |         ----^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+Some errors have detailed explanations: E0277, E0560, E0583, E0599, E0609.
+For more information about an error, try `rustc --explain E0277`.
+warning: `rustdesk` (lib) generated 4 warnings
+error: could not compile `rustdesk` (lib) due to 14 previous errors; 4 warnings emitted
